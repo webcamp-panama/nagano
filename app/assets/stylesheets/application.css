@@ -29,35 +29,34 @@
 }
 
 .main-visual {
-  width: 100%; /* 横幅いっぱい */
-  height: 300px; /* 高さ300px */
+  width: 100%;
+  height: 300px;
   background-image: url(cake_top.jpg);
-  background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
-  background-position: center; /* 背景画像を中央に配置 */
+  background-size: cover;
+  background-position: center;
 }
 
 .main-visual-content {
-  width: 40%; /* 横幅40% */
-  height: 300px; /* 親の高さに揃える */
-  background-color: rgba(0, 0, 0, 0.5); /* 背景色を半透明の黒にする */
-  text-align: center; /* 文字を中央揃えにする */
-  padding-top: 105px; /* 上側の内側余白で垂直方向の位置を調整 */
+  width: 40%;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding-top: 105px;
 }
 
 .main-visual-text {
-  color: #fff; /* 文字色を白に変更 */
+  color: #fff;
 }
 
-/* 追加 */
 .main-visual-name {
-  margin-top: 30px; /* 上側の外側の余白 */
-  color: #fff; /* 文字色を白に変更 */
+  margin-top: 30px;
+  color: #fff;
 }
 
 .main {
-  width: 840px; /* 横幅840px */
-  display: flex; /* Flexboxの利用 */
-  justify-content: center; /* 要素の横並び・中央寄せ */
+  width: 840px;
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
 }
 
@@ -78,4 +77,9 @@
   padding-bottom: 10px;
   background-position: center;
   background-image: url(cake_about.jpg);
+  background-size: cover;
+}
+
+.size-input-email {
+  width: 26em;
 }
