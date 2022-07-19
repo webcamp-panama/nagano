@@ -10,13 +10,14 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to admin_order_path, notice: "You have updated user successfully."
+      redirect_to public_customer_path, notice: "You have updated user successfully."
     else
       render 'edit'
     end
   end
 
-  def unsbscribe
+  def unsubscribe
+    @customer = Customer.find(params[:id])
   end
 
   def withdrawal
