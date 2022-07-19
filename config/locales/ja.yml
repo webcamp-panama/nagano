@@ -10,3 +10,8 @@ ja:
   errors:
     messages:
       record_invalid: "バリデーションに失敗しました: %{errors}"
+
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
