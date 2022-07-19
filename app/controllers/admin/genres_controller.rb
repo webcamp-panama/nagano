@@ -8,7 +8,6 @@ class Admin::GenresController < ApplicationController
   def create
      @genres = Genre.all
      @genre = Genre.new(genre_params)
-     @genre.admin_id = current_admin.id
      if @genre.save
        redirect_to admin_genres_path(@genre)
      else
