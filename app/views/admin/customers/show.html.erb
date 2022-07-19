@@ -1,0 +1,42 @@
+<h1>さんの会員詳細</h1>
+<table>
+    <td>会員ID</td>
+    <td><%= @customer.id %></td>
+</table>
+
+<table>
+    <td>氏名</td>
+    <td><%= @customer.last_name.first_namae %></td>
+</table>
+
+<table>
+    <td>フリガナ</td>
+    <td><%= @customer.last_name_kana.first_name_kana %></td>
+</table>
+
+<table>
+    <td>郵便番号</td>
+    <td><%= @customer.postcode%></td>
+</table>
+
+<table>
+    <td>住所</td>
+    <td><%= @customer.address %></td>
+</table>
+
+<table>
+    <td>電話番号</td>
+    <td><%= @customer.phone_number %></td>
+</table>
+
+<table>
+    <td>メールアドレス</td>
+    <td><%= @customer.email %></td>
+</table>
+
+<table>
+    <td>会員ステータス</td>
+</table>
+
+<div><%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-success edit_book_#{@customer.id}"%></div>
+<div><%= link_to '注文履歴一覧を見る', edit_admin_customer_path(@customer) %></div>

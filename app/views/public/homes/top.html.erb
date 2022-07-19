@@ -1,0 +1,39 @@
+
+<div class="main-visual">
+  <div class="main-visual-content">
+    <p class="main-visual-text">
+          Welcome to Nagano Cake!<br>
+          This site is an EC site for cake sales.<br>
+          Everybody can see products,<br>
+          but need a registratin for purchase.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+<div class="row mt-3 mb-3">
+    <div class="col-1"></div>
+    <div class="col-11">
+      <h1><strong>New Cakes</strong></h1>
+    </div>
+  </div>
+
+<div class="row">
+    <% @items.each do |item| %>
+      <div class="col-4">
+        <div class="card-group">
+          <div class="card">
+            <%= link_to public_item_path(item), class: "card-img-top" do %>
+              <%= image_tag item.get_image(300,300)%>
+            <% end %>
+            <div class="card-body">
+              <%= item.name%><br>
+              <p><%= item.after_tax_on_price.round %>円</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <p><%= link_to "全ての商品を見る>", public_items_path %></p>
