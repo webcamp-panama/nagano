@@ -1,2 +1,39 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<h2>商品新規登録</h2>
+
+
+
+         <div class="container">
+            <tr>
+              <th>商品画像</th>
+              <td>
+                <%#= image_tag item.customer.get_profile_image %>
+              </td>
+            </tr>
+               <br>
+
+             <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
+              <div class="field">
+                 <%= f.label :商品目 %><br />
+                 <%= f.text_field :name, class: 'form-control' %>
+              </div>
+              <div class="field">
+                  <%= f.label :商品説明 %><br />
+                  <%= f.text_field :introduction, class: 'form-control' %>
+              </div>
+              <div class="field">
+                  <%= f.label :ジャンル %><br />
+                   <%= f.select :faculty, [["ケーキ", "ケーキ"], ["キャンディ", "キャンディ"], ["マカロン", "マカロン"]], include_blank: "選択して下さい" %>
+              </div>
+               <div class="field">
+                  <%= f.label :税抜価格 %><br />
+                  <%= f.text_field :introduction, class: 'form-control' %>
+              </div>
+              <div class="field">
+                  <%= f.label :販売ステータス %><br />
+                  <%= f.text_field :introduction, class: 'form-control' %>
+              </div>
+              <div>
+                  <%= f.submit "新規登録", class: 'btn btn-success' %>
+               </div>
+             <% end %>
+         </div>

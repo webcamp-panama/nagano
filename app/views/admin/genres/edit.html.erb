@@ -10,6 +10,20 @@
     </thead>
 </tabel>
 
+
+  <% if @genre.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@genre.errors.count, "error") %> prohibited this genre from being saved:</h3>
+    <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
     <tabel>
     <div class='container'>
       <div class='row'>
