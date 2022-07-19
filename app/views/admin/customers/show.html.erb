@@ -6,12 +6,12 @@
 
 <table>
     <td>氏名</td>
-    <td><%= @customer.last_name.first_namae %></td>
+    <td><%= @customer.first_name  %><%= @customer.last_name%></td>
 </table>
 
 <table>
     <td>フリガナ</td>
-    <td><%= @customer.last_name_kana.first_name_kana %></td>
+    <td><%= @customer.first_name_kana %><%= @customer.last_name_kana %></td>
 </table>
 
 <table>
@@ -39,4 +39,4 @@
 </table>
 
 <div><%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-success edit_book_#{@customer.id}"%></div>
-<div><%= link_to '注文履歴一覧を見る', edit_admin_customer_path(@customer) %></div>
+<div><%= link_to '注文履歴一覧を見る', edit_admin_customer_path(@customer) %></div> 一旦ここのパスは顧客画面編集ページにした。後で注文詳細ページができたら書き換える
