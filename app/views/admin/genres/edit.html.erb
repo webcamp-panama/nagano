@@ -1,14 +1,16 @@
-<h1>ジャンル編集</h1>
+<h2>ジャンル編集</h2>
 
     <tabel>
+    <div class='container'>
       <div class='row'>
-        <div class='col-md-3'>
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
             <td class="mt-3">ジャンル名</td>
-             <%= form_with moedel: @genre, local:true do |f| %>
-
+            <tr>
+             <%= form_with model: @genre, url: edit_admin_genre_path , local:true do |f| %>
+            </tr>
               <div class="form-group">
 
-                <%= f.text_field :name, class: 'form-control' %>
+              <th>  <%= f.text_field :name, class: 'form-control' %></th>
               </div>
               <div class="form-group">
                 <%= f.submit "変更を保存", class: 'btn btn-success' %>
@@ -16,4 +18,5 @@
           <% end %>
         </div>
       </div>
+    </div>
     </table>
