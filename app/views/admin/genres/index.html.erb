@@ -23,7 +23,7 @@
 
 
 
-<table border='1'>
+<thead border='1'>
       <tbody>
          <div class="container">
 
@@ -36,25 +36,20 @@
              <% end %>
 
          </div>
-      </tbody>
-</table>
+      </thead>
 
-
-<tabel>
         <div class='container'>
-          <div class='row'>
-
-              <div class="col-md-5 ">
-
-                <table class="table table-hover table-inverse">
-                  <thead>
-                    <tr>
-                      <th>ジャンル</th>
-                      <th colspan="3"></th>
-                      <th colspan="3"></th>
-                    </tr>
-                  </thead>
-                </table>
+      <div class='row'>
+          <div class="col-md-5 ">
+            <table class="table table-hover table-inverse">
+              <thead>
+                <tr>
+                  <th>ジャンル</th>
+                  <th colspan="3"></th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+            </table>
 
               </div>
 
@@ -64,13 +59,14 @@
                    <tr>
                      <td><%= genre.name %></td>
                      <td><%= link_to edit_admin_genre_path(genre) do %></td>
-                         <div class="btn btn-success">編集する</div>
+                     <div class="btn btn-success">編集する</div>
                          <% end %>
                    </tr>
                   <% end %>
-                </div>
-            </div>
+                     </div>
+               </div>
           </div>
+          </tbody>
         </div>
-           </tbody>
+
 </table>
