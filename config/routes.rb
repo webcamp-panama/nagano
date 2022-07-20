@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       end
     end
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
-    resources :deliveries, only: [:index, :edit, :create, :update, :destroy ]
+    resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
   end
 
   namespace :admin do
