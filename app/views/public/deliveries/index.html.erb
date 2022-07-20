@@ -6,16 +6,16 @@
       <%= form_with model: @delivery, url: public_deliveries_path, local: true do |f| %>
 
         <div class="mb-3">
-          <label for="postcode" class="form-label">郵便番号（ハイフンなし）</label>
-          <input type="text" class="form-control" id="postcode" placeholder="000000">
+          <%= f.label :post_code, "郵便番号" %>
+          <%= f.text_field :post_code, class:"form-control", placeholder: "0000000" %>
         </div>
         <div class="mb-3">
-          <label for="address" class="form-label">住所</label>
-          <input type="text" class="form-control" id="address" placeholder="東京都渋谷区代々木神園町0-0">
+          <%= f.label :adress, "住所" %>
+          <%= f.text_field :adress, class:"form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
         </div>
         <div class="mb-3">
-          <label for="addresses" class="form-label">宛名</label>
-          <input type="text" class="form-control" id="addresses" placeholder="令和道子">
+          <%= f.label :adress_name, "宛名" %>
+          <%= f.text_field :adress_name, class:"form-control", placeholder: "令和道子" %>
         </div>
         <div class="mb-3">
           <%= f.submit "新規登録", class:"btn btn-outline-success btn-block" %>
