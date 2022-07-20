@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   namespace :public do
     get "/about"=>"homes#about"
     get "/unsubscribe"=>"customers#unsubscribe"
-    get "/withdrawal"=>"customers#withdrawal"
+    patch "/withdrawal"=>"customers#withdrawal"
     resources :items, only: [:index, :show ]
-    resources :customers, only: [ :show, :edit, :update, :unsubscribe, :withdrawal]
+    resources :customers, only: [ :show, :edit, :update]
     resources :cart_items, only: [:index, :update, :new, :destroy, :destroy_all, :create ] do
       collection do
         delete 'destroy_all'
