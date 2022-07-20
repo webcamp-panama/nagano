@@ -1,47 +1,64 @@
 <h3>さんの会員情報編集</h3>
 <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch, local:true do |f| %>
-     <table class="form-group">
+
+       <div class="form-group">
+          会員ID
+          <%= @customer.id %>
+        </div>
+
+        <div class="form-group">
         <tr>
-          <%= f.label :first_name %>
+          <%= f.label :氏名%>
           <%= f.text_field :first_name %>
         </tr>
         <tr>
-           <%= f.label :last_name %>
            <%= f.text_field :last_name %>
         </tr>
-      </table>
+      </table> </br>
 
       <table class="form-group">
         <tr>
-          <%= f.label :first_name_kana %>
+          <%= f.label :フリガナ %>
           <%= f.text_field :first_name_kana %>
         </tr>
         <tr>
-          <%= f.label :last_name_kana %>
           <%= f.text_field :last_name_kana %>
         </tr>
-
       </table>
 
       <div class="form-group">
-        <%= f.label :postcode %>
+        <%= f.label :郵便番号 %>
         <%= f.text_field :postcode %>
       </div>
 
       <div class="form-group">
-        <%= f.label :address %>
+        <%= f.label :住所%>
         <%= f.text_field :address %>
       </div>
 
       <div class="form-group">
-        <%= f.label :phone_number %>
+        <%= f.label :電話番号 %>
         <%= f.text_field :phone_number %>
       </div>
 
       <div class="form-group">
-        <%= f.label :email %>
+        <%= f.label :メールアドレス %>
         <%= f.text_field :email %>
       </div>
+
+      <%= form_with(model: @customer, url: admin_customer_path(@customer), local: true) do |f| %>
+        <div class="done">
+          <%= f.label :会員ステータス %>
+          <div>
+            <%= f.radio_button :is_deleted, true %>
+            <%= f.label :is_deleted, '有効', value: true %>
+          </div>
+          <div>
+            <%= f.radio_button :is_deleted, false %>
+            <%= f.label :is_deleted, '退会', value: false %>
+          </div>
+        </div>
+        <% end %>
 
       <div class="form-group">
         <%= f.submit "変更を保存", class: "btn btn-success" %>
