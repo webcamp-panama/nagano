@@ -6,11 +6,10 @@ class Public::DeliveriesController < ApplicationController
   end
 
   def create
+    @deliveries = Delivery.all
     @delivery = Delivery.new(delivery_params)
     if @delivery.save
-      redirect_to request.referrer
-    else
-    render 'index'
+      redirect_to request.referer
     end
   end
 
@@ -18,10 +17,11 @@ class Public::DeliveriesController < ApplicationController
     @delivery = Delivery.find(params[:id])
   end
 
-
-
-
   def update
+    @delivery = Delivery.find(params[:id])
+    if @delivery.update(delivery_params)
+        redirect_to request.referer
+    end
   end
 
   def destroy
