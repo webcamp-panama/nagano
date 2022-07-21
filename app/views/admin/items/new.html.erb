@@ -3,9 +3,11 @@
     <div class='mx-auto col-lg-6'>
       <h2 class="mt-4"><strong>商品新規登録</strong></h2><br>
 
+
+　　<%= form_with model: @item, url: admin_items_path, method: :post , local: true do |f| %>
       <div class="mb-3">
         <%#= image_tag item.customer.get_profile_image %>
-        <%= form_with model: @item, url: admin_items_path , local: true do |f| %>
+
         <%= f.label :image, "商品画像" %>
         <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
       </div>
