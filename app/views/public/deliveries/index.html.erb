@@ -6,16 +6,16 @@
       <%= form_with model: @delivery, url: public_deliveries_path, local: true do |f| %>
 
         <div class="mb-3">
-          <%= f.label :post_code, "郵便番号" %>
-          <%= f.text_field :post_code, class:"form-control", placeholder: "0000000" %>
+          <%= f.label :postcode, "郵便番号" %>
+          <%= f.text_field :postcode, class:"form-control", placeholder: "0000000" %>
         </div>
         <div class="mb-3">
-          <%= f.label :adress, "住所" %>
-          <%= f.text_field :adress, class:"form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
+          <%= f.label :address, "住所" %>
+          <%= f.text_field :address, class:"form-control", placeholder: "東京都渋谷区代々木神園町0-0" %>
         </div>
         <div class="mb-3">
-          <%= f.label :adress_name, "宛名" %>
-          <%= f.text_field :adress_name, class:"form-control", placeholder: "令和道子" %>
+          <%= f.label :name, "宛名" %>
+          <%= f.text_field :name, class:"form-control", placeholder: "令和道子" %>
         </div>
         <div class="mb-3">
           <%= f.submit "新規登録", class:"btn btn-outline-success btn-block" %>
@@ -43,7 +43,7 @@
           <tr>
             <th scope="row">〒<%= delivery.postcode %></th>
             <td><%= delivery.address %></td>
-            <td><%= delivery.address_name %>様</td>
+            <td><%= delivery.name %>様</td>
             <td><%= link_to "編集する", edit_public_delivery_path(delivery) %></td>
             <td><%= link_to "消去する", public_delivery_path(delivery), method: :delete %></td>
           </tr>
