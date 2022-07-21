@@ -13,13 +13,13 @@
               <%= image_tag item.get_image(300,300), class:"card-img-top", alt:"Card image cap", style:"height:150px; width:auto; object-fit: cover" %>
             <% end %>
               <%= item.name%><br>
-              <p><%= item.after_tax_on_price.round %>円</p>
+              <p><%#= item.after_tax_on_price.round %>円</p>
           <% end %>
         </tbody>
       </table>
 
   <div class="row">
     <div class="col-12 d-flex justify-content-center  mt-5 ">
-      <li><%= paginate @items %></li>
+      <%= paginate @items %>
     </div>
   </div>

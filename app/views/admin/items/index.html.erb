@@ -1,8 +1,8 @@
 <div class='container'>
   <div class=“row”>
-    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-       <h1>商品一覧</h1>
+    <div class='mx-auto col-lg-6'>
 
+      <h2 class="mt-4"><strong>商品一欄</strong></h2><br>
              <thead>
                 <div ></div>
                <%= link_to '新規登録画面', new_admin_item_path, class: "fa-solid fa-circle-plus" %>
@@ -22,22 +22,29 @@
                     </tr>
                 </thead>
 
-                <tbody>
-                   <% @items.each do |item| %>
-                         <td><%= item.id %> </td>
-                         <td><%= link_to item.name, admin_item_path(item) %> </td>
-                         <td><%= item.price %> </td>
-                         <td><%= item.genre.name %></td>
-                         <% if item.is_active == true %>
-                         <td>販売中</td>
-                         <% else %>
-                         <td>販売停止中</td>
-                         <% end %>
-                   <% end %>
-                </tbody>
-            </table>
 
-         <p><%= paginate @items %></p>
+          <tbody>
+             <% @items.each do |item| %>
+               <tr>
+                  <td><%= item.id %> </td>
+                  <td><%= link_to item.name, admin_item_path(item) %> </td>
+                  <td><%= item.price %> </td>
+                  <td><%= item.genre.name %></td>
+                  <% if item.is_active == true %>
+                  <td>販売中</td>
+                  <% else %>
+                  <td>販売停止中</td>
+                  <% end %>
+                </tr>
+             <% end %>
+          </tbody>
+        </table>
+
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center  mt-5 ">
+            <p><%= paginate @items %></p>
+          </div>
+        </div>
     </div>
   </div>
 </div>
