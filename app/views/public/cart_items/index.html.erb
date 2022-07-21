@@ -18,13 +18,16 @@
         <%= cart_item.name %>
       </td>
       <td><%= cart_item.item.with_tax_price %></td>
-      <td></td>
+      <td>
+        <%= f.collection_select :quantity %>
+        <%= link_to '変更', public_cart_items_path %>
+      </td>
       <td><%= cart_item.subtotal %></td>
       <td><%= link_to '削除する', pudlic_cart_item_path(@cart_item_id), method: :delete %></td>
     </tr>
-      <% @合計金額 +=  cart_item.subtotal %>
-      <%= button_to '買い物を続ける', public_items_path %>
-      <%= button_to '入力情報に進む', new_public_order_path %>
     <% end %>
+    <%# @合計金額 +=  cart_item.subtotal %>
+    <%= link_to '買い物を続ける', public_items_path %>
+    <%= link_to '入力情報に進む', new_public_order_path %>
   </tbody>
 </table>
