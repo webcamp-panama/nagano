@@ -1,6 +1,6 @@
 <h3>ショッピングカート</h3>
-<%= button_to "カートを空にする", destroy_all_public_cart_items_path, method: :delete %>
 <table class='table table-hover table-inverse'>
+  <%= button_to "カートを空にする", destroy_all_public_cart_items_path, method: :delete, class: "btn btn-danger btn-sm" %>
   <thead>
     <tr>
       <th>商品名</th>
@@ -11,23 +11,38 @@
     </tr>
   </thead>
   <tbody>
-    <% @cart_items.each do |cart_item| %>
-    <tr>
-      <td>
-        <%= image_tag cart_item.image, size:'50x50' %>
-        <%= cart_item.name %>
-      </td>
-      <td><%= cart_item.item.with_tax_price %></td>
-      <td>
-        <%= f.collection_select :quantity %>
-        <%= link_to '変更', public_cart_items_path %>
-      </td>
-      <td><%= cart_item.subtotal %></td>
-      <td><%= link_to '削除する', pudlic_cart_item_path(@cart_item_id), method: :delete %></td>
-    </tr>
+    <% total = 0 %>
+    <% if current_customer.cart_items.present? %>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <%= image_tag cart_item.item.image, size:'50x50' %>
+            <%= cart_item.item.name %>
+          </td>
+          <td><%= (cart_item.item.price*1.10).to_i %></td>
+          <td>
+            <%= form_with model: cart_item, url: public_cart_item_path(cart_item), local: true, method: :patch do |f| %>
+              <%= f.select :quantity, [["1個",1],["2個",2],["3個",3],["4個",4],["5個",5],["6個",6],["7個",7],["8個",8],["9個",9]] %>
+              <%= f.submit "変更", class: "btn btn-success" %>
+            <% end %>
+          </td>
+          <td>
+            <%# subtotal = （（cart_item.item.price*cart_item.quantity)*1.10)to_i %>
+            <%= total %>
+          </td>
+          <td><%= link_to '削除する', pudlic_cart_items_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+          <% total += subtotal %>
+      <% end %>
+      <tr>
+        <th>合計金額</th>
+        <td><%= total %></td>
+      </tr>
+      <tr>
+        <td><%= link_to '買い物を続ける', public_items_path %></td>
+        <td><%= link_to '入力情報に進む', new_public_order_path %></td>
+      </tr>
+      <%# @合計金額 +=  cart_item.subtotal %>
     <% end %>
-    <%# @合計金額 +=  cart_item.subtotal %>
-    <%= link_to '買い物を続ける', public_items_path %>
-    <%= link_to '入力情報に進む', new_public_order_path %>
   </tbody>
 </table>
