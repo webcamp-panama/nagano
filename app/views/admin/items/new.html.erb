@@ -1,8 +1,7 @@
 <div class='container'>
   <div class=“row”>
     <div class='mx-auto col-lg-6'>
-      <h2 class="mt-4"><strong>商品新規登録</strong></h2><br>
-
+      <h2 class="mt-4"><strong>商品新規登録</strong></h2>
 
 　　<%= form_with model: @item, url: admin_items_path, method: :post , local: true do |f| %>
       <div class="mb-3">
@@ -27,8 +26,8 @@
       </div>
 
       <div class="mb-3">
-        <%= f.label :price, "税抜価格" %><br />
-        <%= f.text_field :price, class:"form-control", placeholder: "1000" %> 円
+        <%= f.label :price, "税抜価格（円）" %><br />
+        <%= f.text_field :price, class:"form-control", placeholder: "1000" %>
       </div>
 
       <div class="mb-3">
