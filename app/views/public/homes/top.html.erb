@@ -11,29 +11,28 @@
 </div>
 
 <div class="container">
-<div class="row mt-3 mb-3">
-    <div class="col-1"></div>
-    <div class="col-11">
-      <h1><strong>New Cakes</strong></h1>
-    </div>
+  <div class="row mt-3 mb-3">
+    <h1><strong>New Cakes</strong></h1>
   </div>
 
-<div class="row">
-    <% @items.each do |item| %>
+  <div class="row">
+    <% @item.each do |item| %>
       <div class="col-4">
-        <div class="card-group">
-          <div class="card">
-            <%= link_to public_item_path(item), class: "card-img-top" do %>
-              <%= image_tag item.get_image(300,300)%>
-            <% end %>
-            <div class="card-body">
-              <%= item.name%><br>
-              <p><%#= item.after_tax_on_price.round %>円</p>
-            </div>
+        <div class="card">
+          <%= link_to public_item_path(item), class:"card-body" do %>
+            <%= image_tag item.image, size: "250x250", class:"card-img-top" %><br>
+          <% end %>
+          <div class="card-body">
+            <strong><%= item.name%></strong><br>
+            <strong><%= item.add_tax_on_price.to_s(:delimited) %>円</strong>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 
-  <p><%= link_to "全ての商品を見る>", public_items_path %></p>
+  <div class="row">
+    <div class="col-4 row mt-3 mb-3">
+      <p><%= link_to "全ての商品を見る>", public_items_path %></p>
+    </div>
+  </div>
