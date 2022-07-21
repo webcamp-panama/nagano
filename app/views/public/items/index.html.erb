@@ -1,28 +1,32 @@
-<div class='container'>
-  <div class=“row”>
-    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+<div class="container">
 
-      <h3 class="mt-4"><strong>商品一覧</strong> (全 <%= @total_items %> 件)</h3><br>
+  <div class="row">
+    <div class="col-12 mt-4 mb-4">
+       <h3><strong>商品一覧</strong> (全 <%= @total_items %> 件)</h3><br>
     </div>
+  </div>
 
 
   <div class="row">
-    <div class="col-4">
-      <div class="card">
-        <% @items.each do |item| %>
-          <%= link_to public_item_path(item), class: "card-img-top" do %>
+    <% @items.each do |item| %>
+    <div class="col-4 mb-4">
+      <div class="card-group">
+        <div class="card">
+          <%= link_to public_item_path(item), class:"card-img-top" do %>
             <%= image_tag item.image, size: "250x250", class:"card-img-top" %>
           <% end %>
+          <div class="card-body">
             <%= item.name%><br>
             <%= item.add_tax_on_price.to_s(:delimited) %>円
-        <% end %>
+          </div>
+        </div>
       </div>
     </div>
+    <% end %>
   </div>
-</div>
 
   <div class="row">
     <div class="col-12 d-flex justify-content-center  mt-5 ">
       <%= paginate @items %>
     </div>
-  </div>
+  </div><br>
