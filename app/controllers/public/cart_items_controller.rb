@@ -6,18 +6,19 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item.update(quantity: params[:quantity].to_i)
+    @cart_items.update(quantity: params[:quantity].to_i)
     redirect_to current_cart_item
   end
 
   def destroy
-    @cart_item.destroy
+    @cart_items.destroy
     redirect_to current_cart_item
   end
 
   def destroy_all
-    @cart_item.destroy_all
-    redirect_to current_cart_item
+    @cart_items = CartItem.all
+    @cart_items.destroy_all
+    redirect_to public_cart_item_path
   end
 
   def create
