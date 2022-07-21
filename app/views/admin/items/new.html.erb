@@ -5,7 +5,7 @@
 
       <div class="mb-3">
         <%#= image_tag item.customer.get_profile_image %>
-        <%= form_with model: @item, url: admin_items_path , local: true do |f| %>
+        <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
         <%= f.label :image, "商品画像" %>
         <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
       </div>
