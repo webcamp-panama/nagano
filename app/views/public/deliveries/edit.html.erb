@@ -1,2 +1,18 @@
-<h1>Public::Deliveries#edit</h1>
-<p>Find me in app/views/public/deliveries/edit.html.erb</p>
+<h1>配送先編集</h1>
+
+<%= form_with model: @delivery, url: public_deliveries_path, method: :get, local:true do |f| %>
+      <table>
+        <td>郵便番号（ハイフンなし）</td>
+        <td><%= @delivery.postcode %></td>
+      </table>
+
+    <table>
+        <td>住所</td>
+        <td><<%= @delivery.address%></td>
+    </table>
+
+    <table>
+        <td>宛名</td>
+        <td><%= @delivery.name %></td>
+    </table>
+<% end %>
