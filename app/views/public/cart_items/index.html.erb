@@ -19,7 +19,7 @@
             <%= image_tag cart_item.item.image, size:'50x50' %>
             <%= cart_item.item.name %>
           </td>
-          <td><%= (cart_item.item.price*1.10).to_i %></td>
+          <td><%= cart_item.item.add_tax_on_price.to_s(:delimited) %>円</td>
           <td>
             <%= form_with model: cart_item, url: public_cart_item_path(cart_item), local: true, method: :patch do |f| %>
               <%= f.select :quantity, [["1個",1],["2個",2],["3個",3],["4個",4],["5個",5],["6個",6],["7個",7],["8個",8],["9個",9]] %>
@@ -27,12 +27,12 @@
             <% end %>
           </td>
           <td>
-            <%# subtotal = （（cart_item.item.price*cart_item.quantity)*1.10)to_i %>
+            <%#= total = （（cart_item.item.price*cart_item.quantity)*1.10)to_i %>
             <%= total %>
           </td>
-          <td><%= link_to '削除する', pudlic_cart_items_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
+          <td><%= link_to '削除する', public_cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
         </tr>
-          <% total += subtotal %>
+          <%# total += subtotal %>
       <% end %>
       <tr>
         <th>合計金額</th>
