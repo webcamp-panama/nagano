@@ -8,6 +8,7 @@ class Public::DeliveriesController < ApplicationController
   def create
     @deliveries = Delivery.all
     @delivery = Delivery.new(delivery_params)
+    @delivery.customer_id = current_customer.id
     if @delivery.save
       redirect_to request.referer
     end
