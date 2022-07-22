@@ -7,7 +7,7 @@
         <!--<thead>-->
           <!--<tr>-->
             <!--<th>購入者</th>-->
-            <!--<th>注文日</th>-->
+            <!--<th>注文日時</th>-->
             <!--<th>配送先</th>-->
             <!--<th>支払方法</th>-->
             <!--<th>注文ステータス</th>-->
@@ -20,7 +20,7 @@
             <td><%#= @order.name %></td>
           </tr>
           <tr>
-            <th>注文日時</th>
+            <th>注文日</th>
             <td><%#= @order.datetime %></td>
           </tr>
           <tr>
@@ -33,7 +33,9 @@
           </tr>
           <tr>
             <th>注文ステータス</th>
-            <td><%= @orders.select :status, [['入金待ち', 1], ['入金確認中', 2], ['製造中', 3], ['製造済み',4], ['発送準備中', 5], ['発送済み', 6]] %></td>
+            <%= form_with url: public_orders_path, method: :post do |f| %>
+             <td><%= f.select :status, [['入金待ち', 1], ['入金確認中', 2], ['製造中', 3], ['製造済み',4], ['発送準備中', 5], ['発送済み', 6]] %></td>
+            <% end %>
             <td><%= link_to "更新", admin_order_path, class:"btn btn-success" %></td>
           </tr>
         </tbody>
@@ -58,9 +60,11 @@
           <% @orders.each do |order| %>
             <tr>
               <td><%= order.item.name %></td>
-              <td><%= order.item.with_tax_price %></td>
+              <td><%= order.item.with_tax_price.to_s(:delimited) %></td>
               <td><%= order.quantity %></td>
-              <td><%= order.select :making_status, options_from_collection_for_select([['着手不可', 1], ['着手可', 2]]) %>
+              <%= form_with url: public_orders_path, method: :post do |f| %>
+                <td><%= f.select :making_status, options_from_collection_for_select([['着手不可', 1], ['着手可', 2]]) %>
+              <% end %>
               <td><%= link_to "更新", admin_order_path, class:"btn btn-success" %></td>
             </tr>
           <% end %>
