@@ -1,6 +1,8 @@
 # ECサイト名
 ### Nagano Cake
 
+![top](https://user-images.githubusercontent.com/106375669/180465542-172bdaa3-9120-482b-89bd-ad816457d9bc.png)
+
 ## サービス概要
 長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。
 
@@ -24,5 +26,9 @@
  （注文ステータス,製作ステータス,販売ステータス,会員ステータス）
 - 一般ユーザー一覧表示
 - 一般ユーザーの削除
-- 
+
+## ER図
+
+![【再々】ER図_パナマ](https://user-images.githubusercontent.com/106375669/180466183-d0bbc487-f604-40a2-81c6-cd7f342e869a.png)
+
 
