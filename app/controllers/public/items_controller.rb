@@ -6,10 +6,11 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @cart_item = CartItem.new
+    @cart_item = CartItem
   end
 
-  def add_tax_on_price
-   (self.price * 1.10).round
+  private
+  def item_params
+    params.require(:items).permit(:genre_id, :name, :introduction, :price, :is_activ)
   end
 end
