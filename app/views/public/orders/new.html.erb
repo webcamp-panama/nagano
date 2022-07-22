@@ -3,7 +3,7 @@
     <div class='mx-auto col-lg-7'>
       <h2 class="mt-4"><strong>注文情報入力</strong></h2><br>
 
-      <%= form_with model: @order, url: public_confirm_path , method: :post do |f| %>
+      <%= form_with model: @order, url: public_confirm_path, method: :post do |f| %>
         <h4 class="my-3 ml-3"><strong>支払方法</strong></h4>
         <div class="col-5 ml-2">
           <%= f.radio_button :payment_method, :credit_card %>　<%= f.label :payment_method, "クレジットカード" %><br>
@@ -11,20 +11,20 @@
         </div>
 
         <h4 class="my-3 ml-3"><strong>お届け先</strong></h4>
-        <div class="col-5 ml-2">
+        <div class="col-5 ml-2 mt-2">
           <%= f.radio_button :address_select, 0, checked: true %>
           <%= f.label :address_select, "　ご自身の住所" %> <br>
-          <span class="ml-3"><%= "〒" + current_customer.postcode + " " + current_customer.address %></span><br>
-          <span class="ml-3"><%= current_customer.last_name + current_customer.first_name %></span>
+          <span class="ml-5"><%= "〒" + current_customer.postcode %></span><br>
+          <span class="ml-5"><%= current_customer.address %></span><br>
+          <span class="ml-5"><%= current_customer.last_name + current_customer.first_name %></span>
         </div>
-        <div class="col-6 ml-2">
-          <%= f.radio_button :address_select, 0, checked: true %>
-          <%= f.label :address_select, "　登録済み住所から選択" %> <br>
-          <!--<span class="ml-3">%= "〒" + current_customer.postcode + " " + current_customer.address %></span><br>-->
-          <!--<span class="ml-3">%= current_customer.last_name + current_customer.first_name %></span>-->
+        <div class="col-6 ml-2 mt-2">
+          <%= f.radio_button :address_delect, 1 %>
+          <%= f.label :address_select, "　登録済住所から選択" %>
+          <span class="ml-5"><%= f.collection_select :address_id, Delivery.all, :id, :address, :prompt => true, class:"form-control" %></span>
         </div>
-        <div class="col-5 ml-2">
-          <%= f.radio_button :address_select, 0, checked: true %>
+        <div class="col-5 ml-2 mt-2">
+          <%= f.radio_button :address_select, 2 %>
           <%= f.label :address_select, "　新しいお届け先" %> <br>
         </div>
 

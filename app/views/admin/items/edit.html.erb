@@ -1,13 +1,11 @@
-
 <div class='container'>
   <div class=“row”>
     <div class='mx-auto col-lg-6'>
       <h2 class="mt-4"><strong>商品編集</strong></h2><br>
 
-      <%= form_with model: @item, url: public_order_path , local: true do |f| %>
+      <%= form_with model: @item, url: admin_item_path , local: true do |f| %>
       <div class="mb-3">
         <%#= image_tag item.customer.get_profile_image %>
-
         <%= f.label :image, "商品画像" %>
         <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
       </div>
@@ -28,11 +26,12 @@
       </div>
 
       <div class="mb-3">
-        <%= f.label :price, "税抜価格" %><br />
-        <%= f.text_field :price, class:"form-control", placeholder: "1000" %> 円
+        <%= f.label :price, "税抜価格（円）" %><br />
+        <%= f.text_field :price, class:"form-control", placeholder: "1000" %>
       </div>
 
       <div class="mb-3">
+        <%#= @item.add_tax_price.to_s(:dalimited) %>
         <%= f.label :is_active, "販売ステータス　　" %>
         <%= f.radio_button :is_active, :true %>
         <%= f.label :is_active, "販売中　　" %>
