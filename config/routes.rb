@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :public do
     get "/about"=>"homes#about"
     get "/unsubscribe"=>"customers#unsubscribe"
+     get "/confirm"=>"customers#confirm"
     patch "/withdrawal"=>"customers#withdrawal"
     resources :items, only: [:index, :show ]
     resources :customers, only: [ :show, :edit, :update]
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
-    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+    resources :orders, only: [:new, :show, :confirm, :complete, :create, :index]
     resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
   end
 

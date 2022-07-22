@@ -4,7 +4,7 @@
     <div class='mx-auto col-lg-6'>
       <h2 class="mt-4"><strong>商品編集</strong></h2><br>
 
-      <%= form_with model: @item, url: admin_item_path , local: true do |f| %>
+      <%= form_with model: @item, url: public_order_path , local: true do |f| %>
       <div class="mb-3">
         <%#= image_tag item.customer.get_profile_image %>
 
@@ -33,7 +33,6 @@
       </div>
 
       <div class="mb-3">
-        <%#= @item.add_tax_price.to_s(:dalimited) %>
         <%= f.label :is_active, "販売ステータス　　" %>
         <%= f.radio_button :is_active, :true %>
         <%= f.label :is_active, "販売中　　" %>
