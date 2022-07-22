@@ -39,6 +39,7 @@
       </thead>
 
       <% @deliveries.each do |delivery| %>
+      <%if delivery.customer == current_customer %>
         <tbody>
           <tr>
             <th scope="row">〒<%= delivery.postcode %></th>
@@ -48,5 +49,6 @@
             <td><%= link_to "消去する", public_delivery_path(delivery), method: :delete %></td>
           </tr>
         </tbody>
+      <% end %>
       <% end %>
     </table>
