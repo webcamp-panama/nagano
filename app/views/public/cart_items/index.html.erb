@@ -11,9 +11,9 @@
     </tr>
   </thead>
   <tbody>
-    <% total = 0 %>
     <% if current_customer.cart_items.present? %>
       <% @cart_items.each do |cart_item| %>
+      <% @total += cart_item.subtotal %>
         <tr>
           <td>
             <%= image_tag cart_item.item.image, size:'50x50' %>
@@ -27,22 +27,21 @@
             <% end %>
           </td>
           <td>
-            <%#= total = （（cart_item.item.price*cart_item.quantity)*1.10)to_i %>
-            <%= total %>
+            <%= cart_item.subtotal %>
           </td>
           <td><%= link_to '削除する', public_cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
         </tr>
-          <%# total += subtotal %>
       <% end %>
       <tr>
         <th>合計金額</th>
-        <td><%= total %></td>
+        <td>
+          <%= @total %>
+        </td>
       </tr>
       <tr>
         <td><%= link_to '買い物を続ける', public_items_path %></td>
         <td><%= link_to '入力情報に進む', new_public_order_path %></td>
       </tr>
-      <%# @合計金額 +=  cart_item.subtotal %>
     <% end %>
   </tbody>
 </table>
