@@ -1,49 +1,62 @@
-<h3><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h3>
-<table>
-    <td>会員ID</td>
-    <td><%= @customer.id %></td>
-</table>
+<div class='container'>
+  <div class=“row”>
+    <div class='mx-auto col-lg-7'>
+      <h2 class="mt-4"><strong><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</strong></h2><br>
 
-<table>
-    <td>氏名</td>
-    <td><%= @customer.first_name %><%= @customer.last_name%></td>
-</table>
+      <div class="mb-3">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>会員ID</td>
+              <td><%= @customer.id %></td>
+            </tr>
+            <tr>
+              <td>氏名</td>
+              <td><%= @customer.full_name %></td>
+            </tr>
+            <tr>
+              <td>フリガナ</td>
+              <td><%= @customer.full_name_kana %></td>
+            </tr>
+            <tr>
+              <td>郵便番号</td>
+              <td><%= @customer.postcode%></td>
+            </tr>
+            <tr>
+              <td>住所</td>
+              <td><%= @customer.address %></td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td><%= @customer.phone_number %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= @customer.email %></td>
+            </tr>
+            <tr>
+              <td>会員ステータス</td>
+              <td>
+                <% if @customer.is_deleted == true %>
+                  <span class="text-secondary" ><strong>退会</strong></span>
+                <% else %>
+                  <span class="text-success" ><strong>有効</strong></span>
+                <% end %>
+              </td>
+            </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
-    <td>フリガナ</td>
-    <td><%= @customer.first_name_kana %><%= @customer.last_name_kana %></td>
-</table>
-
-<table>
-    <td>郵便番号</td>
-    <td><%= @customer.postcode%></td>
-</table>
-
-<table>
-    <td>住所</td>
-    <td><%= @customer.address %></td>
-</table>
-
-<table>
-    <td>電話番号</td>
-    <td><%= @customer.phone_number %></td>
-</table>
-
-<table>
-    <td>メールアドレス</td>
-    <td><%= @customer.email %></td>
-</table>
-
-<table>
-    <td>会員ステータス</td>
-    <td>
-       <% if @customer.is_deleted == true %>
-        退会
-        <% else %>
-        有効
-        <% end %>
-    </td>
-</table>
-
-<div><%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-success edit_book_#{@customer.id}"%></div>
-<!--<div><%= link_to '注文履歴一覧を見る', edit_admin_customer_path(@customer) %></div> 一旦ここのパスは顧客画面編集ページにした。後で注文詳細ページができたら書き換える-->
+<div class="col-md-5 mt-4 mx-auto text-center">
+   <div class="row">
+     <div class="col">
+      <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success btn-block edit_book_#{@customer.id}" %>
+     </div>
+     <div class="col">
+       <!--<%= link_to "注文履歴一覧", edit_admin_customer_path(@customer), class:"btn btn-primary btn-block" %> #一旦ここのパスは顧客画面編集ページにした。後で注文詳細ページができたら書き換える-->
+     </div>
+   </div>
+</div><br>
