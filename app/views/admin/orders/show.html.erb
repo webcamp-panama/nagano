@@ -1,2 +1,87 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class='container'>
+  <div class=“row”>
+    <div class='mx-auto col-lg-6'>
+     <h2 class="mt-4"><strong>注文履歴詳細</strong></h2><br>
+
+<table class='table table-hover table-inverse' >
+  <!--<thead>-->
+  <!--        <tr>-->
+  <!--          <th>購入者</th>-->
+  <!--          <th>注文日</th>-->
+  <!--          <th>配送先</th>-->
+  <!--          <th>支払方法</th>-->
+  <!--          <th>注文ステータス</th>-->
+  <!--          <th></th>-->
+  <!--        </tr>-->
+  <!--</thead>-->
+  <tbody>
+            <tr>
+              <th>購入者</th>
+              <td><%#= @order.name %></td>
+            </tr>
+            <tr>
+              <th>注文日時</th>
+              <td><%#= @order.datetime %></td>
+            </tr>
+            <tr>
+              <th>配送先</th>
+              <td><%#= @order.address %></td>
+            </tr>
+            <tr>
+              <th>支払方法</th>
+              <td><%#= @order.payment_method %></td>
+            </tr>
+            <tr>
+              <th>注文ステータス</th>
+              <td><%= @orders.select :status, [['入金待ち', 1], ['入金確認中', 2], ['製造中', 3], ['製造済み',4], ['発送準備中', 5], ['発送済み', 6]] %></td>
+              <td><%= link_to "更新", admin_order_path, class:"btn btn-success" %></td>
+            </tr>
+          </tr>
+  </tbody>
+</table>
+
+
+
+  <table class='table table-hover table-inverse' >
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込み)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+             <td><%= order.item.name %></td>
+             <td><%= order.item.with_tax_price %></td>
+             <td><%= order.quantity %></td>
+              <td><%= order.select :making_status, options_from_collection_for_select([['着手不可', 1], ['着手可', 2]]) %>
+              <td><%= link_to "更新", admin_order_path, class:"btn btn-success" %></td>
+            </tr>
+
+          <% end %>
+        </tbody>
+   </table>
+
+
+         <table class='table under'>
+              <tr>
+                <th>商品合計</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>送料</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>請求合計金額</th>
+                <td></td>
+              </tr>
+         </table>
+
+     </div>
+  </div>
+ </div>
