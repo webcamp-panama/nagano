@@ -21,7 +21,7 @@ class Public::DeliveriesController < ApplicationController
   def update
     @delivery = Delivery.find(params[:id])
     if @delivery.update(delivery_params)
-        redirect_to request.referer
+        redirect_to public_deliveries_path
     end
   end
 
