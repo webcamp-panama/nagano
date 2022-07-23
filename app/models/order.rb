@@ -13,4 +13,8 @@ class Order < ApplicationRecord
     (self.price * 1.10).round
   end
 
+  def subtotal
+    order.item.add_tax_on_price*order.quantity
+  end
+
 end
