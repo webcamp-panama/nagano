@@ -1,4 +1,9 @@
 class Public::ItemsController < ApplicationController
+
+  def new
+     @item = Item.find(params[:id])
+  end
+
   def index
     @items = Item.page(params[:page]).per(6)
     @total_items = Item.count

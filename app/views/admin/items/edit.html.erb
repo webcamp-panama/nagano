@@ -1,4 +1,3 @@
-
 <div class='container'>
   <div class=“row”>
     <div class='mx-auto col-lg-6'>
@@ -7,7 +6,6 @@
       <%= form_with model: @item, url: admin_item_path , local: true do |f| %>
       <div class="mb-3">
         <%#= image_tag item.customer.get_profile_image %>
-
         <%= f.label :image, "商品画像" %>
         <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
       </div>
@@ -24,12 +22,12 @@
 
       <div class="mb-3">
         <%= f.label :genre, "ジャンル　　" %>
-        <%= f.collection_select :genre_id, Genre.all, :id, :name, class:"form-control" %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true, class:"form-control" %>
       </div>
 
       <div class="mb-3">
-        <%= f.label :price, "税抜価格" %><br />
-        <%= f.text_field :price, class:"form-control", placeholder: "1000" %> 円
+        <%= f.label :price, "税抜価格（円）" %><br />
+        <%= f.text_field :price, class:"form-control", placeholder: "1000" %>
       </div>
 
       <div class="mb-3">
