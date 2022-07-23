@@ -60,7 +60,7 @@
           <% @orders.each do |order| %>
             <tr>
               <td><%= order.item.name %></td>
-              <td><%= order.item.with_tax_price.to_s(:delimited) %></td>
+              <td><%= order.item.add_tax_on_price.to_s(:delimited) %></td>
               <td><%= order.quantity %></td>
               <%= form_with url: public_orders_path, method: :post do |f| %>
                 <td><%= f.select :making_status, options_from_collection_for_select([['着手不可', 1], ['着手可', 2]]) %>

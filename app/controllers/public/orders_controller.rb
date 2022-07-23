@@ -13,7 +13,6 @@ class Public::OrdersController < ApplicationController
   def create
     @orders = Order.all
     @order = Order.find(params[:id])
-
   end
 
   def index
