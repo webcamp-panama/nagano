@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   namespace :public do
     get "/about"=>"homes#about"
     get "/unsubscribe"=>"customers#unsubscribe"
-     get "/confirm"=>"customers#confirm"
+    get "/confirm"=>"customers#confirm"
     patch "/withdrawal"=>"customers#withdrawal"
     resources :items, only: [:index, :show ]
     resources :customers, only: [ :show, :edit, :update]
