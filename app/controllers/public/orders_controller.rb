@@ -12,8 +12,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     @orders = Order.all
-    @order = Order.find(params[:id])
-
+    redirect_to public_orders_confirm_path
   end
 
   def index
@@ -22,8 +21,6 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
-
-
 
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name)
