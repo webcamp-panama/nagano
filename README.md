@@ -1,24 +1,34 @@
-# README
+# ECサイト名
+### Nagano Cake
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![top](https://user-images.githubusercontent.com/106375669/180465542-172bdaa3-9120-482b-89bd-ad816457d9bc.png)
 
-Things you may want to cover:
+## サービス概要
+長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。
 
-* Ruby version
+## 主な機能
 
-* System dependencies
+#### 一般ユーザー
+- 会員登録
+- ログイン
+- 退会機能
+- アカウント情報編集
+- 商品の購入
+- 注文履歴の確認
+- 配送先の複数登録
 
-* Configuration
+#### 管理ユーザー
+- 管理者ログイン
+- 商品登録
+- ジャンル登録
+- 受注履歴の確認
+- ステータスの更新<br>
+ （注文ステータス,製作ステータス,販売ステータス,会員ステータス）
+- 一般ユーザー一覧表示
+- 一般ユーザーの削除
 
-* Database creation
+## ER図
 
-* Database initialization
+![【再々】ER図_パナマ](https://user-images.githubusercontent.com/106375669/180466183-d0bbc487-f604-40a2-81c6-cd7f342e869a.png)
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
