@@ -20,7 +20,7 @@
       <div class="col-4">
         <div class="card">
           <%= link_to public_item_path(item), class:"card-body" do %>
-            <%= image_tag item.image, size: "250x250", class:"card-img-top" %><br>
+            <%= image_tag item.get_image(250,250), class:"card-img-top" %><br>
           <% end %>
           <div class="card-body">
             <strong><%= item.name%></strong><br>
