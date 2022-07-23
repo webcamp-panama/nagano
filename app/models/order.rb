@@ -5,12 +5,9 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_items
 
+
   validates :address, presence: true
   validates :name, presence: true
   validates :postcode, presence: true
-
-  def full_address
-    self.postcode + " " + self.address + " " + self.name
-  end
 
 end
