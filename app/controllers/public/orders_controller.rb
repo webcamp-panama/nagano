@@ -13,6 +13,7 @@ class Public::OrdersController < ApplicationController
   def create
     @orders = Order.all
     redirect_to public_orders_confirm_path
+
   end
 
   def index
