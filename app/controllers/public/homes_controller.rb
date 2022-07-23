@@ -1,6 +1,7 @@
 class Public::HomesController < ApplicationController
   def top
-    @item = Item.page(params[:page]).per(3)
+    @items = Item.page(params[:page]).per(3)
+     #redirect_to admin_item_path(item_params)
   end
 
   def about

@@ -13,6 +13,7 @@ class Public::OrdersController < ApplicationController
   def create
     @orders = Order.all
     redirect_to public_orders_confirm_path
+
   end
 
   def index
@@ -20,6 +21,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: @order.id)
+    @total = @order.total_payment - @order.shipping_cost
   end
 
   def order_params

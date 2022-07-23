@@ -9,6 +9,7 @@ class Order < ApplicationRecord
   validates :name, presence: true
   validates :postcode, presence: true
 
+
   def add_tax_on_price
     (self.price * 1.10).round
   end
