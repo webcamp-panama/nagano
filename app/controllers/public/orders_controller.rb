@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     @orders = Order.all
-    
+    redirect_to public_orders_confirm_path
 
   end
 
@@ -22,8 +22,6 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
-
-
 
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name)
