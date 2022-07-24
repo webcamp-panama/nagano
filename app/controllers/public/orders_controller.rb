@@ -68,7 +68,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: @order.id)
     @total = @order.total_payment - @order.shipping_cost
-    # @order_details.quantity = cart_items.quantity
   end
 
  private
