@@ -2,7 +2,9 @@ class Admin::OrdersController < ApplicationController
 
 
   def show
+    @order = Order.find(params[:id])
     @orders = Order.all
+    @customer = Customer.find(params[:id])
     #@order = Order.find(params[:id])
   end
 
@@ -24,7 +26,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :created_at)
   end
 
 end

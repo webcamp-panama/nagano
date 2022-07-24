@@ -4,6 +4,7 @@ class Order < ApplicationRecord
 
   belongs_to :customer
   has_many :order_details, dependent: :destroy
+  has_many :cart_items
 
   validates :address, presence: true
   validates :name, presence: true
@@ -14,8 +15,8 @@ class Order < ApplicationRecord
     (self.price * 1.10).round
   end
 
-  def subtotal
-    order.item.add_tax_on_price*order.quantity
-  end
+  #def subtotal
+    #item.add_tax_on_price*order.quantity
+  #end
 
 end

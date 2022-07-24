@@ -4,38 +4,30 @@
      <h2 class="mt-4"><strong>注文履歴詳細</strong></h2><br>
 
       <table class='table table-hover table-inverse' >
-        <!--<thead>-->
-          <!--<tr>-->
-            <!--<th>購入者</th>-->
-            <!--<th>注文日時</th>-->
-            <!--<th>配送先</th>-->
-            <!--<th>支払方法</th>-->
-            <!--<th>注文ステータス</th>-->
-            <!--<th></th>-->
-          <!--</tr>-->
-        <!--</thead>-->
         <tbody>
           <tr>
             <th>購入者</th>
-            <td><%#= @order.name %></td>
+            <td><%= @customer.full_name %></td>
           </tr>
           <tr>
             <th>注文日</th>
-            <td><%#= @order.datetime %></td>
+            <td><%= @order.created_at %></td>
           </tr>
           <tr>
             <th>配送先</th>
-            <td><%#= @order.address %></td>
+            <td><%= @order.address %></td>
           </tr>
           <tr>
             <th>支払方法</th>
-            <td><%#= @order.payment_method %></td>
+            <td><%= @order.payment_method %></td>
+            <!--日本語にならない-->
           </tr>
           <tr>
             <th>注文ステータス</th>
             <%= form_with url: public_orders_path, method: :post do |f| %>
              <td><%= f.select :status, [['入金待ち', 1], ['入金確認中', 2], ['製造中', 3], ['製造済み',4], ['発送準備中', 5], ['発送済み', 6]] %></td>
              <td><%= link_to "更新", admin_order_path, class:"btn btn-success" %></td>
+             <!--更新できない-->
             <% end %>
           </tr>
         </tbody>
@@ -57,19 +49,19 @@
           </tr>
         </thead>
         <tbody>
-          <% @orders.each do |order| %>
-          <% @total += order.subtotal %>
+          <%# @cart_items.each do |cart_item| %>
+          <%# @total += order.subtotal %>
             <tr>
-              <td><%= order.item.name %></td>
-              <td><%= order.item.add_tax_on_price.to_s(:delimited) %></td>
-              <td><%= order.quantity %></td>
-              <td><%= order.subtotal %></td>
-              <%= form_with url: public_orders_path, method: :post do |i| %>
-                <td><%= i.select :making_status, options_from_collection_for_select([['着手不可', 1], ['着手可', 2]]) %>
-                <td><%= i.submit "更新", class:"btn btn-success" %></td>
-              <% end %>
+              <td><%#= cart_item.item.name %></td>
+              <td><%#= order.item.add_tax_on_price.to_s(:delimited) %></td>
+              <td><%#= order.quantity %></td>
+              <td><%#= order.subtotal %></td>
+              <%#= form_with url: public_orders_path, method: :post do |i| %>
+                <td><%#= i.select :making_status, options_from_collection_for_select([['着手不可', 1], ['着手可', 2]]) %>
+                <td><%#= i.submit "更新", class:"btn btn-success" %></td>
+              <%# end %>
             </tr>
-          <% end %>
+          <%# end %>
         </tbody>
       </table>
     </div>
@@ -77,7 +69,7 @@
       <table class='table under'>
         <tr>
           <th>商品合計</th>
-          <td><%= @</td>
+          <td></td>
         </tr>
         <tr>
           <th>送料</th>
