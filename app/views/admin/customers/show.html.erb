@@ -45,18 +45,8 @@
               </td>
             </tr>
         </table>
+        <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success btn-block edit_book_#{@customer.id}" %>
       </div>
     </div>
   </div>
 </div>
-
-<div class="col-md-5 mt-4 mx-auto text-center">
-   <div class="row">
-     <div class="col">
-      <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success btn-block edit_book_#{@customer.id}" %>
-     </div>
-     <div class="col">
-       <!--<%= link_to "注文履歴一覧", edit_admin_customer_path(@customer), class:"btn btn-primary btn-block" %> #一旦ここのパスは顧客画面編集ページにした。後で注文詳細ページができたら書き換える-->
-     </div>
-   </div>
-</div><br>

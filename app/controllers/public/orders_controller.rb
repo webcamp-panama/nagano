@@ -73,6 +73,7 @@ class Public::OrdersController < ApplicationController
     @total_items = @order.quantity.count
     @order_details = OrderDetail.where(order_id: @order.id)
     @total = @order.total_payment - @order.shipping_cost
+    # @order_details.quantity = cart_items.quantity
   end
 
  private
