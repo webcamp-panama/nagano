@@ -1,5 +1,5 @@
 class Public::CartItemsController < ApplicationController
-  before_action :authenticate_customer!
+  #before_action :authenticate_customer!
 
   def index
     @cart_items = current_customer.cart_items.all
@@ -23,18 +23,16 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @total = 0
-    @cart_items = current_customer.cart_items.new(cart_items_params)
+
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
       @cart_items = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       @cart_items.quantity += params[:cart_item][:quantity].to_i
       @cart_items.save
       redirect_to public_cart_items_path
-    elsif @cart_items.save
-      @cart_items = current_customer.cart_items.all
-      render 'index'
     else
-      @cart_items = current_customer.cart_items.all
-      render 'index'
+      @cart_items = current_customer.cart_items.new(cart_items_params)
+      @cart_items.save
+      redirect_to public_cart_items_path
     end
   end
 
