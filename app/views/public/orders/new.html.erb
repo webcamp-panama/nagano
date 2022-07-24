@@ -3,7 +3,7 @@
     <div class='mx-auto col-lg-7'>
       <h2 class="mt-4"><strong>注文情報入力</strong></h2><br>
 
-      <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
+      <%= form_with model: @order, url: public_orders_confirm_path, method: :post do |f| %>
         <h4 class="my-3 ml-3"><strong>支払方法</strong></h4>
         <div class="col-5 ml-2">
           <%= f.radio_button :payment_method, :credit_card %>　<%= f.label :payment_method, "クレジットカード" %><br>
