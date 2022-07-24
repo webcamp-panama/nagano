@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  #before_action :authenticate_customer!
+
   def new
     @order = Order.new
 
@@ -60,12 +62,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+
     @orders = Order.page(params[:page]).per(10)
+    @total_items = Item.count
 
   end
 
   def show
     @order = Order.find(params[:id])
+    @total_items = @order.quantity.count
     @order_details = OrderDetail.where(order_id: @order.id)
     @total = @order.total_payment - @order.shipping_cost
     # @order_details.quantity = cart_items.quantity
