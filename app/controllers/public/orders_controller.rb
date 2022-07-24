@@ -37,12 +37,13 @@ class Public::OrdersController < ApplicationController
 
   def create
     @orders = Order.all
-    @order = Order.new(order_params)
-
+    @order = Order.new
+    @order.save
     redirect_to public_orders_complete_path
   end
 
   def index
+
     @orders = Order.page(params[:page]).per(10)
   end
 

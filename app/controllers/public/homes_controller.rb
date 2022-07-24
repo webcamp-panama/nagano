@@ -1,4 +1,6 @@
 class Public::HomesController < ApplicationController
+  before_action :authenticate_admin!
+
   def top
     @items = Item.page(params[:page]).per(3)
      #redirect_to admin_item_path(item_params)
