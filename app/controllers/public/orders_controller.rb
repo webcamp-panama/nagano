@@ -35,7 +35,8 @@ class Public::OrdersController < ApplicationController
 
   def create
     @orders = Order.all
-    @order = Order.new(order_params)
+    @order = Order.new
+    
 
     redirect_to public_orders_complete_path
   end
