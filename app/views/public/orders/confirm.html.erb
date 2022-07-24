@@ -63,6 +63,12 @@
 
     <div class="text-center mb-5">
       <%= form_with model: @order, url: public_orders_path, local: true, method: :post do |f| %>
+      <%= f.hidden_field :postcode, :value => @order.postcode %>
+      <%= f.hidden_field :payment_method, :value => @order.payment_method  %>
+      <%= f.hidden_field :address, :value => @order.address%>
+      <%= f.hidden_field :name, :value => @order.name%>
+      <%= f.hidden_field :total_payment, :value => @total + @order.shipping_cost  %>
+
        <%= f.submit "注文を確定", class: "btn btn-success btn-lg" %>
       <% end %>
     </div>
