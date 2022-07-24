@@ -49,17 +49,17 @@
           </tr>
         </thead>
         <tbody>
-          <%# @cart_items.each do |cart_item| %>
+          <% @orders.each do |order| %>
           <%# @total += order.subtotal %>
             <tr>
-              <td><%#= cart_item.item.name %></td>
+              <td><%#= .item.name %></td>
               <td><%#= order.item.add_tax_on_price.to_s(:delimited) %></td>
               <td><%#= order.quantity %></td>
               <td><%#= order.subtotal %></td>
               <%#= form_with url: public_orders_path, method: :post do |i| %>
                 <td><%#= i.select :making_status, options_from_collection_for_select([['着手不可', 1], ['着手可', 2]]) %>
                 <td><%#= i.submit "更新", class:"btn btn-success" %></td>
-              <%# end %>
+              <% end %>
             </tr>
           <%# end %>
         </tbody>
