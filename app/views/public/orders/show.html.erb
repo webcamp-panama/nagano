@@ -72,8 +72,8 @@
                 <%= order_detail.item.name %>
               </td>
               <td class="align-middle"><%= (order_detail.price*1.1).floor.to_s(:delimited) %></td>
-              <td class="align-middle"><%= order_detail.count %></td>
-              <td class="align-middle"><%= (order_detail.subtotal).to_s(:delimited) %></td>
+              <td class="align-middle"><%= @total_times %></td>
+              <!--<td class="align-middle"><%#= (order_detail.subtotal).to_s(:delimited) %></td>-->
             </tr>
           <% end %>
         </tbody>

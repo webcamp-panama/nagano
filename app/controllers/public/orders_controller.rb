@@ -64,11 +64,13 @@ class Public::OrdersController < ApplicationController
   def index
 
     @orders = Order.page(params[:page]).per(10)
+    @total_items = Item.count
 
   end
 
   def show
     @order = Order.find(params[:id])
+    @total_items = @order.quantity.count
     @order_details = OrderDetail.where(order_id: @order.id)
     @total = @order.total_payment - @order.shipping_cost
   end
