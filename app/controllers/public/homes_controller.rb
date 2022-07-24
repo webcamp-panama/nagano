@@ -1,5 +1,5 @@
 class Public::HomesController < ApplicationController
-  before_action :authenticate_admin!
+  #before_action :authenticate_admin!
 
   def top
     @items = Item.page(params[:page]).per(3)
