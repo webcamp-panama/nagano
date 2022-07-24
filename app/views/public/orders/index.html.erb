@@ -20,7 +20,7 @@
       <tbody>
         <% @orders.each do |order| %>
           <tr>
-            <td><%= order.created_at %></td>
+            <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
             <td><%= "〒" + order.postcode %><br>
                 <%= order.address %>
                 <%= order.name %>
@@ -31,10 +31,10 @@
               <% end %>
             </td>
             <td>
-              <%= order.total_payment %>
+              <%= (order.total_payment).to_s(:delimited) %>
             </td>
-            <td><%= link_to '表示する', public_order_path(order), method: :post, class: "btn btn-primary" %></td>
-
+            <td><%= order.status_i18n %></td>
+            <td><%= link_to '表示する', public_order_path(order), class: "btn btn-primary" %></td>
           </tr>
         <% end %>
       </tbody>
