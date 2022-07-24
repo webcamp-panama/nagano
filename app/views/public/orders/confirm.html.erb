@@ -21,12 +21,12 @@
                 <%= image_tag cart_item.item.image, size:'50x50' %>
                 　　<%= cart_item.item.name %>
               </td>
-             <td><%= cart_item.item.add_tax_on_price.to_s(:delimited) %>円</td>
+             <td><%= cart_item.item.add_tax_on_price.to_s(:delimited) %></td>
               <td>
                 <%= cart_item.quantity %>
               </td>
               <td>
-                <%= cart_item.subtotal.to_s(:delimited) %>円
+                <%= cart_item.subtotal.to_s(:delimited) %>
               </td>
             </tr>
           <% end %>
@@ -61,7 +61,12 @@
 
     <div class="text-center mb-5">
       <%= form_with model: @order, url: public_orders_path, local: true, method: :post do |f| %>
-       <%= f.submit "注文を確定", class: "btn btn-success btn-lg" %>
+        <%= f.hidden_field :postcode, :value => @order.postcode %>
+        <%= f.hidden_field :payment_method, :value => @order.payment_method  %>
+        <%= f.hidden_field :address, :value => @order.address%>
+        <%= f.hidden_field :name, :value => @order.name%>
+        <%= f.hidden_field :total_payment, :value => @total + @order.shipping_cost  %>
+      <%= f.submit "注文を確定", class: "btn btn-success btn-lg" %>
       <% end %>
     </div>
 </div><br><br><br><br>
