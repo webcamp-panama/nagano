@@ -25,8 +25,7 @@ class Item < ApplicationRecord
     (self.price * 1.10).round
    end
 
-   def
-    taxin_price
+   def  taxin_price
     price*1.1
    end
 
