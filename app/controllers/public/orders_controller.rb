@@ -61,6 +61,7 @@ class Public::OrdersController < ApplicationController
     @orders = Order.page(params[:page]).per(10)
     @total_items = Item.count
 
+
   end
 
   def show
@@ -71,7 +72,7 @@ class Public::OrdersController < ApplicationController
 
  private
   def order_params
-    params.require(:order).permit(:payment_method, :postcode, :address, :name, :total_payment)
+    params.require(:order).permit(:payment_method, :postcode, :address, :name, :total_payment )
   end
 
 
