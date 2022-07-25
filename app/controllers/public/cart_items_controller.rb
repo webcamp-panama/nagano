@@ -29,6 +29,7 @@ class Public::CartItemsController < ApplicationController
       @cart_items.quantity += params[:cart_item][:quantity].to_i
       @cart_items.save
       redirect_to public_cart_items_path
+
     else
       @cart_items = current_customer.cart_items.new(cart_items_params)
       @cart_items.save

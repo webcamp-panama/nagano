@@ -2,6 +2,8 @@ class Public::ItemsController < ApplicationController
  before_action :authenticate_customer!
 
 
+
+
   def new
      @item = Item.find(params[:id])
   end

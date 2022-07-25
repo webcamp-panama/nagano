@@ -61,6 +61,7 @@ class Public::OrdersController < ApplicationController
     @orders = Order.page(params[:page]).per(10)
     @total_items = Item.count
 
+
   end
 
   def show
