@@ -20,7 +20,7 @@ class Admin::OrdersController < ApplicationController
     if @order.update(order_params)
       if @order.status == "payment_confirm"
          @order.order_details.each do |order_detail|
-         order_detail.update(making_status: "making" )
+         order_detail.update(making_status: "makig_waiting" )
          end
       end
       redirect_to admin_order_path
@@ -29,13 +29,13 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
-  # def confirm
-  #   @order = Order.new(order_params)
-  #   @address = Address.find(params[:order][:address_id])
-  #   @order.postal_code = @address.postal_code
-  #   @order.address = @address.address
-  #   @order.name = @address.name
-  # end
+  # # def confirm
+  ##    @order = Order.new(order_params)
+  # #   @address = Address.find(params[:order][:address_id])
+  # #   @order.postal_code = @address.postal_code
+  ##    @order.address = @address.address
+  # #   @order.name = @address.name
+  # # end
 
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :created_at, :status, :making_status, :order_id)
