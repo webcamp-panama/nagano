@@ -1,11 +1,18 @@
 class Admin::OrdersController < ApplicationController
 #before_action :authenticate_admin!
 
+  # def show
+  #   @order_details = OrderDetail.find(params[:id])
+  #   @order = Order.find(params[:id])
+  #   @orders = Order.all
+  #   @customer = Customer.find(params[:id])
+  #   #@order = Order.find(params[:id])
+  # end
+
   def show
     @order = Order.find(params[:id])
-    @orders = Order.all
-    @customer = Customer.find(params[:id])
-    #@order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: @order.id)
+    @total = @order.total_payment - @order.shipping_cost
   end
 
   def update
@@ -26,7 +33,11 @@ class Admin::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :created_at)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :created_at, :status, :making_status, :order_id)
+  end
+
+  def set_order
+    @order = Order.find(params[:id])
   end
 
 end
