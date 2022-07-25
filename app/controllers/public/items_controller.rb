@@ -1,6 +1,5 @@
 class Public::ItemsController < ApplicationController
- before_action :authenticate_customer!
-
+ before_action :authenticate_customer!, except: [:show, :index]
 
   def new
      @item = Item.find(params[:id])
