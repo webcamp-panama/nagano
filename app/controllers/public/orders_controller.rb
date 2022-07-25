@@ -17,7 +17,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:address_select] == "0"
       @order.postcode = current_customer.postcode
       @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      @order.name = current_customer.last_name + current_customer.first_name
 
     elsif params[:order][:address_select] == "1"
       @delivery = Delivery.find(params[:order][:address_id])
@@ -40,12 +40,12 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     if @order.save
        cart_items.each do |cart|
-        order_detail = OrderDetail.new
-        order_detail.item_id = cart.item_id
-        order_detail.order_id = @order.id
-        order_detail.quantity = cart.quantity
-        order_detail.price = cart.item.price
-        order_detail.save
+      order_detail = OrderDetail.new
+      order_detail.item_id = cart.item_id
+      order_detail.order_id = @order.id
+      order_detail.quantity = cart.quantity
+      order_detail.price = cart.item.price
+      order_detail.save
     end
     redirect_to public_orders_complete_path
     cart_items.destroy_all
