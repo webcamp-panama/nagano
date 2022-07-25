@@ -12,6 +12,7 @@ class Public::DeliveriesController < ApplicationController
     @delivery.customer_id = current_customer.id
     if @delivery.save
       redirect_to request.referer
+      
     end
   end
 
