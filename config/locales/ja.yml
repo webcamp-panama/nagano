@@ -10,6 +10,12 @@ ja:
         making: "製作中"
         prepare_shipping: "発送準備中"
         shipping_out: "発送済み"
+    orderdetail:
+      making_status:
+        unmakeble: "製作不可"
+        makig_waiting: "製作待ち"
+        making: "製作中"
+        making_complete: "製作完了"
   helpers:
     select:
       prompt: "---選択してください---"
@@ -22,6 +28,9 @@ ja:
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
+
+
+
 
 
 
