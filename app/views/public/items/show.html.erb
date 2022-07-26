@@ -25,6 +25,7 @@
             <tr>
               <td>
                 <% if customer_signed_in? %>
+
                   <% if @item.is_active == true %>
                   <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
                     <%= f.select :quantity, [["個数選択"],["1個",1],["2個",2],["3個",3],["4個",4],["5個",5],["6個",6],["7個",7],["8個",8],["9個",9]], class:"form-select" %><br>
@@ -34,6 +35,7 @@
                   <% else %>
                     <span class="text-danger" ><strong>販売停止中</strong></span>
                   <% end %>
+
                 <% end %>
               </td>
             </tr>
