@@ -62,19 +62,19 @@
             <th>小計</th>
           </tr>
         </thead>
+        <% @order_details.each do |order_detail| %>
+
         <tbody>
-          <% @order_details.each do |order_detail| %>
             <tr>
               <td class="align-middle">
                 <%= order_detail.item.name %>
               </td>
               <td class="align-middle"><%= (order_detail.price*1.1).floor.to_s(:delimited) %></td>
-
               <td class="align-middle"><%= order_detail.quantity %></td>
               <td class="align-middle"><%= (order_detail.subtotal).to_s(:delimited) %></td>
-
             </tr>
           <% end %>
+
         </tbody>
       </table>
     </div>
